@@ -13,6 +13,7 @@ enablePlugins(JavaAppPackaging, ContinuousIntegrationPlugin, BuildInfoPlugin)
 // docker configuration
 dockerAlias := dockerAlias.value.copy(username = Some("muki"))
 dockerExposedPorts := Seq(8080)
+dockerBaseImage := "openjdk:8-jre"
 
 // application configuration
 javaOptions in Universal ++= Seq(
