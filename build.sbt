@@ -22,3 +22,4 @@ javaOptions in Universal ++= Seq(
 
 // build info
 buildInfoPackage := "echo.build"
+buildInfoOptions += BuildInfoOption.ToJson
