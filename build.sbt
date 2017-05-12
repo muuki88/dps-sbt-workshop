@@ -8,12 +8,12 @@ libraryDependencies ++= Seq(
   Dependencies.scalaTest
 )
 
-enablePlugins(JavaAppPackaging, ContinuousIntegrationPlugin, BuildInfoPlugin)
+enablePlugins(JavaAppPackaging, ContinuousIntegrationPlugin, BuildInfoPlugin, AshScriptPlugin)
 
 // docker configuration
 dockerAlias := dockerAlias.value.copy(username = Some("muki"))
 dockerExposedPorts := Seq(8080)
-dockerBaseImage := "openjdk:8-jre"
+dockerBaseImage := "openjdk:8-jre-alpine"
 
 // application configuration
 javaOptions in Universal ++= Seq(
