@@ -4,7 +4,10 @@ import sbt.plugins.JvmPlugin
 
 object ContinuousIntegrationPlugin extends AutoPlugin {
 
-  override def requires: Plugins = JvmPlugin
+  /**
+    * The plugins that need to be enabled before this plugin can be enabled.
+    */
+  override val requires: Plugins = JvmPlugin
 
   /**
     * All tasks and settings declared in this object will be automatically imported into every *.sbt
