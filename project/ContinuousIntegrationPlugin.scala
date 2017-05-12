@@ -6,10 +6,33 @@ object ContinuousIntegrationPlugin extends AutoPlugin {
 
   override def requires: Plugins = JvmPlugin
 
+  /**
+    * All tasks and settings declared in this object will be automatically imported into every *.sbt
+    * file.
+    *
+    * The object or val must be called `autoImport`
+    */
+  object autoImport {
+    /**
+      * Define a custom setting
+      */
+    val buildNumber: SettingKey[Option[String]] = SettingKey[Option[String]]("buildNumber", "Contains the CI build number if available")
+  }
+  import autoImport._
+
+  /**
+    * Define a command alias for validation. This can be used as a single command on your CI.
+    */
   private val validate = addCommandAlias("validate", "; clean ; compile ; test")
 
+  /**
+    * The project settings this AutoPlugin configures.
+    *
+    * @return settings applied to the project
+    */
   override def projectSettings: Seq[Setting[_]] = Seq(
-    version := s"1.${sys.env.getOrElse("BUILD_NUMBER", "0-SNAPSHOT")}"
+    buildNumber := sys.env.get("BUILD_NUMBER"),
+    version := s"1.${buildNumber.value.getOrElse("0-SNAPSHOT")}"
   ) ++ validate
 
 }
