@@ -8,7 +8,7 @@ libraryDependencies ++= Seq(
   "org.scalatest" %% "scalatest" % "3.0.1" % Test
 )
 
-enablePlugins(JavaAppPackaging, ContinuousIntegrationPlugin)
+enablePlugins(JavaAppPackaging, ContinuousIntegrationPlugin, BuildInfoPlugin)
 
 // docker configuration
 dockerAlias := dockerAlias.value.copy(username = Some("muki"))
@@ -19,3 +19,6 @@ javaOptions in Universal ++= Seq(
   "-J-Xms1024m",
   "-J-Xmx2048m"
 )
+
+// build info
+buildInfoPackage := "echo.build"
