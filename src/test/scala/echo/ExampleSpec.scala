@@ -3,8 +3,8 @@ package echo
 import org.scalatest._
 
 /**
- * @see http://www.scalatest.org/user_guide
- */
+  * @see http://www.scalatest.org/user_guide
+  */
 class ExampleSpec extends WordSpec with Matchers {
 
   "Booleans" should {
