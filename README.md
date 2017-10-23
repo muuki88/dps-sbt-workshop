@@ -1,8 +1,9 @@
 # SBT Workshop
 
-Checkout this repository and make sure you can launch sbt correctly
+Checkout this repository and make sure you can launch `sbt` and `docker` correctly
 
 ```bash
+$ docker ps
 $ sbt
 ```
 
