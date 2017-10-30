@@ -1,14 +1,13 @@
 import sbt._
 import sbt.Keys.version
 import sbt.plugins.JvmPlugin
-import org.scalafmt.sbt.ScalafmtPlugin
 
 object ContinuousIntegrationPlugin extends AutoPlugin {
 
   /**
     * The plugins that need to be enabled before this plugin can be enabled.
     */
-  override val requires: Plugins = JvmPlugin && ScalafmtPlugin
+  override val requires: Plugins = JvmPlugin
 
   /**
     * All tasks and settings declared in this object will be automatically imported into every *.sbt
