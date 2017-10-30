@@ -1,13 +1,14 @@
 import sbt._
 import sbt.Keys.version
 import sbt.plugins.JvmPlugin
+import com.lucidchart.sbt.scalafmt.ScalafmtPlugin
 
 object ContinuousIntegrationPlugin extends AutoPlugin {
 
   /**
     * The plugins that need to be enabled before this plugin can be enabled.
     */
-  override val requires: Plugins = JvmPlugin
+  override val requires: Plugins = JvmPlugin && ScalafmtPlugin
 
   /**
     * All tasks and settings declared in this object will be automatically imported into every *.sbt
@@ -28,7 +29,7 @@ object ContinuousIntegrationPlugin extends AutoPlugin {
   /**
     * Define a command alias for validation. This can be used as a single command on your CI.
     */
-  private val validate = addCommandAlias("validate", "; clean ; scalafmtTest ; compile ; test")
+  private val validate = addCommandAlias("validate", "; clean ; scalafmt::test ; compile ; test")
 
   /**
     * The project settings this AutoPlugin configures.
