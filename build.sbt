@@ -24,3 +24,7 @@ javaOptions in Universal ++= Seq(
 // build info
 buildInfoPackage := "echo.build"
 buildInfoOptions += BuildInfoOption.ToJson
+
+buildInfoKeys += BuildInfoKey.action("buildTime") {
+  System.currentTimeMillis
+} // re-computed each time at compile
